@@ -22,4 +22,11 @@
         id, uid, uname, ugender, uaddress, ubalance, uavarta, skey, sessionkey, create_time, update_time
     </sql>
 
+    <insert id="myinsert">
+        insert into users(uid,sessionkey,ubalance,create_time) values(#{uid},#{sessionkey},
+        #{ubalance},#{create_time})
+    </insert>
+    <update id="updateSocre">
+        update users set ubalance=ubalance+#{score} where uid=#{uid}
+    </update>
 </mapper>

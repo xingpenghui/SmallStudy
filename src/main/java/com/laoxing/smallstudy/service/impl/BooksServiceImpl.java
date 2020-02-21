@@ -38,7 +38,6 @@ public class BooksServiceImpl extends ServiceImpl<BooksMapper, Books> implements
 
     @Override
     public R checkBook(String uid, int bid) {
-
         return R.setR(getBaseMapper().queryUidBid(uid, bid)==0);
     }
 

@@ -19,6 +19,6 @@ public interface BooksMapper extends BaseMapper<Books> {
 
     List<Books> all(String name);
     List<Books> queryUid(String uid);
-    int queryUidBid(@Param("uid") String uid,@Param("bid") int bid);
+    int queryUidBid(@Param("uid") String uid,@Param("bkid") int bid);
 
 }

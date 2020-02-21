@@ -26,8 +26,8 @@
         select b.*,o.oprice from orders o left join books b
         on o.bkid=b.bkid where o.uid=#{uid}
     </select>
-    <select id="queryUidBid" >
+    <select id="queryUidBid" resultType="int">
         select count(*) from orders o left join books b
-        on o.bkid=b.bkid where o.uid=#{uid} and b.bkid=#{bid};
+        on o.bkid=b.bkid where o.uid=#{uid} and b.bkid=#{bkid};
     </select>
 </mapper>

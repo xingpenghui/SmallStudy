@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laoxing.smallstudy.dao.BooksMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.laoxing.smallstudy.entity.Books">
+        <id column="bkid" property="bkid" />
+        <result column="bkclass" property="bkclass" />
+        <result column="bkname" property="bkname" />
+        <result column="bkauthor" property="bkauthor" />
+        <result column="bkpublisher" property="bkpublisher" />
+        <result column="bkfile" property="bkfile" />
+        <result column="bkcover" property="bkcover" />
+        <result column="bkprice" property="bkprice" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        bkid, bkclass, bkname, bkauthor, bkpublisher, bkfile, bkcover, bkprice
+    </sql>
+    <select id="all" resultType="com.laoxing.smallstudy.entity.Books">
+        select <include refid="Base_Column_List" ></include>
+        from books where bkname like #{name} or bkauthor like #{name};
+    </select>
+    <select id="queryUid" resultType="com.laoxing.smallstudy.entity.Books">
+        select b.*,o.oprice from orders o left join books b
+        on o.bkid=b.bkid where o.uid=#{uid}
+    </select>
+    <select id="queryUidBid" >
+        select count(*) from orders o left join books b
+        on o.bkid=b.bkid where o.uid=#{uid} and b.bkid=#{bid};
+    </select>
+</mapper>
